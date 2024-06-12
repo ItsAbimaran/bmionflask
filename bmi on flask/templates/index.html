@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+      background-image: url('https://cdn.gencraft.com/prod/user/eeea234a-76a2-4cca-9195-bc2ddd8b840c/d8e571f4-14d0-4aad-8c22-a3153a3be306/image/image1_0.jpg?Expires=1710340743&Signature=Ln~AIzd1gVABOOUXz9hLjFp89ONCWC56k-MaUEHWNwqk-wsmkbh19~L07cgnUUwcEw8yr8SGu3YuiEo34cYCtM27nWyXbsUl8TyMbIVulDIvUvQKLpivJgAkKgoDKuDOgelIegBjIt9MRj5PzVS5Nh3t-H2nhvJFePsC3PjjtCQm2fPmYHAqZ6rI3TmpeB3r8B9ZPgbVBV~mmO91GKllW4IDPhOWulbP-47lLJMeBxV2SN36UDI1CUz40EOHtDP1mMtfLLmW5ONEmadhrKXrZr~nU5t4j-rH1ozbyBA7bQIxLW-tF3c0DImdn6K83vrs06tHH8rXKHrah52QYVZQGQ__&Key-Pair-Id=K3RDDB1TZ8BHT8'); 
+      background-position: center;
+      background-size:cover;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    
+    }
+    .calculator {
+      max-width: 400px;
+      margin: auto;
+      background-position: center;
+      background-color: #ff80ab;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #ffffff;
+      color: rgb(9, 9, 9);
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    h2 {
+      color: #333;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+    <h2>BMI Calculator</h2>
+    <label for="weight">Weight (kg):</label>
+    <input type="number" id="weight" placeholder="Enter weight" required>
+
+    <label for="height">Height (cm):</label>
+    <input type="number" id="height" placeholder="Enter height" required>
+
+    <button onclick="calculateBMI()">Calculate BMI</button>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function calculateBMI() {
+      var weight = document.getElementById('weight').value;
+      var height = document.getElementById('height').value;
+
+      if (weight && height) {
+        var bmi = weight / ((height / 100) ** 2);
+        var category = '';
+
+        if (bmi < 18.5) {
+          category = 'Underweight';
+        } else if (bmi >= 18.5 && bmi < 24.9) {
+          category = 'Normal weight';
+        } else if (bmi >= 25 && bmi < 29.9) {
+          category = 'Overweight';
+        } else {
+          category = 'Obese';
+        }
+
+        document.getElementById('result').innerHTML = 'Your BMI is ' + bmi.toFixed(2) + ' - ' + category;
+      } else {
+        alert('Please enter both weight and height.');
+      }
+    }
+  </script>
+
+</body>
+</html>
